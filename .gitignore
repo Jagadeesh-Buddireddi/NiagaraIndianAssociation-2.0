@@ -17,3 +17,5 @@ coverage
 .DS_Store
 
 *.log
+*.mp4
+public/images/videos/
