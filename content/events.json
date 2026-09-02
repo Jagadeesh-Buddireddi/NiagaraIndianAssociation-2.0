@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "India Independence Day Celebration",
+    "description": "Celebrate India's Independence Day with cultural performances, music, food, and community activities.",
+    "date": "15 August 2026",
+    "location": "Niagara Falls",
+    "image": "/events/event1.jpg",
+    "category": "Upcoming"
+  },
+  {
+    "id": 2,
+    "title": "Diwali Festival",
+    "description": "Festival of Lights celebration with performances, fireworks, and delicious Indian cuisine.",
+    "date": "October 2026",
+    "location": "Niagara Region",
+    "image": "/events/event2.jpg",
+    "category": "Festival"
+  },
+  {
+    "id": 3,
+    "title": "Community Picnic",
+    "description": "Family picnic with games, networking, and fun activities for all ages.",
+    "date": "Summer 2026",
+    "location": "St. Catharines",
+    "image": "/events/event3.jpg",
+    "category": "Family"
+  }
+]
