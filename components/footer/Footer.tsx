@@ -3,11 +3,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import {
+  ArrowRight,
   Mail,
   MapPin,
   Phone,
   ArrowUp,
 } from "lucide-react";
+
+import { motion, useReducedMotion } from "framer-motion";
 
 import {
   FaFacebookF,
@@ -24,14 +27,26 @@ const quickLinks = [
 ];
 
 const resourceLinks = [
-  { title: "Membership Benefits", href: "https://www.zeffy.com/en-CA/ticketing/niagara-indian-associations-memberships" },
-  { title: "Business Directory", href: "#" },
-  { title: "Volunteer", href: "#" },
-  { title: "Privacy Policy", href: "#" },
-  { title: "Terms & Conditions", href: "#" },
+  {
+    title: "Membership Benefits",
+    href: "https://www.zeffy.com/en-CA/ticketing/niagara-indian-associations-memberships",
+    external: true,
+  },
+  {
+    title: "Business Directory",
+    href: "https://app.niagaraindians.com/",
+    external: true,
+  },
+  {
+    title: "Volunteer",
+    href: "/contact",
+    external: false,
+  },
 ];
 
 export default function Footer() {
+  const shouldReduceMotion = useReducedMotion();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -43,21 +58,82 @@ export default function Footer() {
     <footer className="relative overflow-hidden bg-[#071c32] text-white">
 
       {/* =====================================================
+          CINEMATIC AMBIENT BACKGROUND
+      ===================================================== */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <motion.div
+          aria-hidden="true"
+          className="absolute -left-24 -top-24 h-72 w-72 rounded-full bg-orange-500/10 blur-3xl"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { x: [0, 35, 0], y: [0, 20, 0] }
+          }
+          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          aria-hidden="true"
+          className="absolute right-[-8rem] top-1/3 h-96 w-96 rounded-full bg-sky-400/10 blur-3xl"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { x: [0, -30, 0], y: [0, 35, 0] }
+          }
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          aria-hidden="true"
+          className="absolute bottom-[-8rem] left-1/3 h-80 w-80 rounded-full bg-green-500/10 blur-3xl"
+          animate={
+            shouldReduceMotion
+              ? undefined
+              : { scale: [1, 1.12, 1] }
+          }
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.9) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.9) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+        />
+      </div>
+
+      {/* =====================================================
           DECORATIVE INDIA / CANADA WAVES
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 overflow-hidden opacity-20">
-        <div className="absolute -bottom-28 left-[-5%] h-48 w-[55%] rotate-[-5deg] rounded-[50%] border-[25px] border-orange-500" />
-
-        <div className="absolute -bottom-36 left-[25%] h-48 w-[55%] rotate-[3deg] rounded-[50%] border-[25px] border-white" />
-
-        <div className="absolute -bottom-44 left-[50%] h-48 w-[55%] rotate-[-4deg] rounded-[50%] border-[25px] border-green-600" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 overflow-hidden opacity-20">
+        <motion.div
+          className="absolute -bottom-28 left-[-5%] h-48 w-[55%] rotate-[-5deg] rounded-[50%] border-[25px] border-orange-500"
+          animate={shouldReduceMotion ? undefined : { x: [0, 24, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-36 left-[25%] h-48 w-[55%] rotate-[3deg] rounded-[50%] border-[25px] border-white"
+          animate={shouldReduceMotion ? undefined : { x: [0, -20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -bottom-44 left-[50%] h-48 w-[55%] rotate-[-4deg] rounded-[50%] border-[25px] border-green-600"
+          animate={shouldReduceMotion ? undefined : { x: [0, 18, 0] }}
+          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
 
       {/* =====================================================
           MAIN FOOTER CONTENT
       ===================================================== */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <motion.div
+        className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:px-10"
+        initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+        whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
 
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
 
@@ -112,8 +188,8 @@ export default function Footer() {
             <div className="mt-7 flex items-center gap-3">
 
               {/* Facebook */}
-              <a
-                href="#"
+              <motion.a
+                href="https://www.facebook.com/NiagaraIndianAssociation/"
                 aria-label="Facebook"
                 className="
                   flex
@@ -129,14 +205,16 @@ export default function Footer() {
                   hover:-translate-y-1
                   hover:bg-[#1877F2]
                 "
+                whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.08 }}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
               >
                 <FaFacebookF size={17} />
-              </a>
+              </motion.a>
 
 
               {/* Instagram */}
-              <a
-                href="#"
+              <motion.a
+                href="https://www.instagram.com/niagaraindianassociation"
                 aria-label="Instagram"
                 className="
                   flex
@@ -152,14 +230,16 @@ export default function Footer() {
                   hover:-translate-y-1
                   hover:bg-[#E4405F]
                 "
+                whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.08 }}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
               >
                 <FaInstagram size={18} />
-              </a>
+              </motion.a>
 
 
               {/* YouTube */}
-              <a
-                href="#"
+              <motion.a
+                href="https://www.youtube.com/@Niagaraindians"
                 aria-label="YouTube"
                 className="
                   flex
@@ -175,9 +255,11 @@ export default function Footer() {
                   hover:-translate-y-1
                   hover:bg-[#FF0000]
                 "
+                whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.08 }}
+                whileTap={shouldReduceMotion ? undefined : { scale: 0.94 }}
               >
                 <FaYoutube size={18} />
-              </a>
+              </motion.a>
 
             </div>
 
@@ -198,14 +280,13 @@ export default function Footer() {
                 <li key={link.title}>
                   <Link
                     href={link.href}
-                    className="
-                      text-sm
-                      text-slate-400
-                      transition
-                      hover:text-white
-                    "
+                    className="group inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
                   >
                     {link.title}
+                    <ArrowRight
+                      size={13}
+                      className="translate-x-0 opacity-0 transition duration-200 group-hover:translate-x-1 group-hover:opacity-100"
+                    />
                   </Link>
                 </li>
               ))}
@@ -226,17 +307,31 @@ export default function Footer() {
             <ul className="mt-6 space-y-4">
               {resourceLinks.map((link) => (
                 <li key={link.title}>
-                  <Link
-                    href={link.href}
-                    className="
-                      text-sm
-                      text-slate-400
-                      transition
-                      hover:text-white
-                    "
-                  >
-                    {link.title}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
+                    >
+                      {link.title}
+                      <ArrowRight
+                        size={13}
+                        className="translate-x-0 opacity-0 transition duration-200 group-hover:translate-x-1 group-hover:opacity-100"
+                      />
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="group inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white"
+                    >
+                      {link.title}
+                      <ArrowRight
+                        size={13}
+                        className="translate-x-0 opacity-0 transition duration-200 group-hover:translate-x-1 group-hover:opacity-100"
+                      />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -296,7 +391,7 @@ export default function Footer() {
 
               {/* Phone */}
               <a
-                href="tel:+12892152601"
+                href="tel:+19053474347"
                 className="
                   flex
                   items-center
@@ -319,9 +414,14 @@ export default function Footer() {
 
 
             {/* Membership */}
-            <Link
-              href="/membership"
-              className="
+            <motion.div
+              whileHover={shouldReduceMotion ? undefined : { y: -3, scale: 1.02 }}
+              whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
+              className="inline-block"
+            >
+              <Link
+                href="/membership"
+                className="
                 mt-7
                 inline-flex
                 items-center
@@ -336,8 +436,9 @@ export default function Footer() {
                 hover:bg-orange-600
               "
             >
-              Become a Member
-            </Link>
+                Become a Member
+              </Link>
+            </motion.div>
 
           </div>
 
@@ -347,7 +448,13 @@ export default function Footer() {
         {/* =====================================================
             DIVIDER
         ===================================================== */}
-        <div className="my-12 h-px bg-white/10" />
+        <motion.div
+          className="my-12 h-px origin-left bg-gradient-to-r from-orange-400/60 via-white/10 to-green-500/60"
+          initial={shouldReduceMotion ? false : { scaleX: 0 }}
+          whileInView={shouldReduceMotion ? undefined : { scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
+        />
 
 
         {/* =====================================================
@@ -369,10 +476,12 @@ export default function Footer() {
 
 
           {/* Back to top */}
-          <button
+          <motion.button
             type="button"
             onClick={scrollToTop}
             aria-label="Back to top"
+            whileHover={shouldReduceMotion ? undefined : { y: -3, scale: 1.08 }}
+            whileTap={shouldReduceMotion ? undefined : { scale: 0.92 }}
             className="
               flex
               h-9
@@ -388,11 +497,11 @@ export default function Footer() {
             "
           >
             <ArrowUp size={16} />
-          </button>
+          </motion.button>
 
         </div>
 
-      </div>
+      </motion.div>
     </footer>
   );
 }

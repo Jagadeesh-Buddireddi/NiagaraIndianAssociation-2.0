@@ -100,10 +100,6 @@ function ProfileSlide({
           {member.role}
         </p>
 
-        <div className="mt-10 inline-flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white transition group-hover:border-orange-300/50 group-hover:bg-orange-400 group-hover:text-[#07182f]">
-          <span>View profile</span>
-          <ArrowRight size={17} />
-        </div>
       </div>
     </motion.button>
   );

@@ -22,11 +22,8 @@ export const events: EventItem[] = [
 
     image: "/images/events/independence-day.png",
 
-    // This event has already happened.
     status: "past",
 
-    // IMPORTANT:
-    // A past event must never be featured.
     featured: false,
 
     activities: [
@@ -78,69 +75,104 @@ export const events: EventItem[] = [
   // UPCOMING EVENT
   // ============================================================
   {
-    id: "diwali-celebration-2026",
+    id: "nia-consular-camp-2026",
 
-    title: "NIA Diwali Celebration",
+    title: "Consular Camp",
 
-    date: "2026-11-07",
+    date: "2026-11-22",
 
-    dateLabel: "November 7, 2026",
+    dateLabel: "November 22, 2026",
 
-    time: "5:00 PM onwards",
+    time: "Time to be announced",
 
-    location: "St. Catharines",
-
-    address: "Address to be confirmed",
+    location: "Niagara Falls",
 
     description:
-      "Join the Niagara Indian Association for an evening of celebration, culture, music, dance and community as we celebrate Diwali together.",
+      "The Niagara Indian Association is hosting a Consular Camp to provide life certificate services to Indian and Indo-Canadian pensioners and consultations on various consular matters.",
 
-    image: "/images/events/diwali-2026.png",
+    image: "/images/events/consular-camp-2026.png",
 
-    // This event is upcoming.
     status: "upcoming",
 
-    // This is the featured upcoming event.
     featured: true,
 
     activities: [
       {
         number: "01",
 
-        title: "Welcome & Lighting Ceremony",
+        title: "Life Certificates",
 
-        time: "5:00 PM",
+        time: "Time to be announced",
 
-        location: "Main Hall",
+        location: "Niagara Falls",
 
         description:
-          "Join us for the traditional Diwali lighting ceremony and opening celebration.",
+          "Services to assist Indian and Indo-Canadian pensioners with life certificate requirements.",
       },
 
       {
         number: "02",
 
-        title: "Cultural Performances",
+        title: "Document Attestation",
 
-        time: "6:00 PM",
+        time: "Time to be announced",
 
-        location: "Main Stage",
+        location: "Niagara Falls",
 
         description:
-          "Enjoy cultural performances from members of the Niagara community.",
+          "Consultation and assistance related to document attestation matters.",
       },
 
       {
         number: "03",
 
-        title: "Community Dinner",
+        title: "OCI / Passport Guidance",
 
-        time: "8:00 PM",
+        time: "Time to be announced",
 
-        location: "Dining Area",
+        location: "Niagara Falls",
 
         description:
-          "Enjoy an evening of food and community connection.",
+          "Guidance and consultations regarding OCI and passport-related matters.",
+      },
+
+      {
+        number: "04",
+
+        title: "Power of Attorney",
+
+        time: "Time to be announced",
+
+        location: "Niagara Falls",
+
+        description:
+          "Consultation regarding power of attorney and related consular requirements.",
+      },
+
+      {
+        number: "05",
+
+        title: "Visa / PCC Queries",
+
+        time: "Time to be announced",
+
+        location: "Niagara Falls",
+
+        description:
+          "Consultations for visa and Police Clearance Certificate (PCC) related queries.",
+      },
+
+      {
+        number: "06",
+
+        title: "Other Consular Consultations",
+
+        time: "Time to be announced",
+
+        location: "Niagara Falls",
+
+        description:
+          "General consultations on various consular matters and services.",
       },
     ],
   },

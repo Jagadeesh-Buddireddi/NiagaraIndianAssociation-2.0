@@ -22,6 +22,8 @@ import { motion } from "framer-motion";
 const MEMBERSHIP_URL =
   "https://www.zeffy.com/en-CA/ticketing/niagara-indian-associations-memberships";
 
+const COMMUNITY_PORTAL_URL = "https://app.niagaraindians.com/";
+
 const benefits = [
   {
     icon: Users,
@@ -223,14 +225,22 @@ export default function MembershipPage() {
                 <ArrowRight size={16} />
               </a>
 
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/15"
+              <a
+                href={COMMUNITY_PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/15"
               >
-                Learn About NIA
-              </Link>
+                Already a Member? Open Portal
+                <ArrowRight size={16} />
+              </a>
 
             </div>
+
+            <p className="mt-4 text-xs leading-5 text-slate-400">
+              New members register securely through Zeffy. Existing members can
+              access their NIA digital community portal online.
+            </p>
 
           </motion.div>
 
@@ -761,8 +771,26 @@ export default function MembershipPage() {
               </a>
 
               <p className="mt-4 text-center text-xs text-slate-500">
-                Membership registration will open in a new page.
+                Membership registration will open securely through Zeffy.
               </p>
+
+              <div className="my-6 flex items-center gap-3">
+                <span className="h-px flex-1 bg-white/10" />
+                <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-slate-500">
+                  Existing Member
+                </span>
+                <span className="h-px flex-1 bg-white/10" />
+              </div>
+
+              <a
+                href={COMMUNITY_PORTAL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center gap-3 rounded-xl border border-white/15 bg-white/[0.07] px-6 py-4 text-sm font-bold text-white transition hover:bg-white/[0.12]"
+              >
+                Open NIA Community Portal
+                <ArrowRight size={17} />
+              </a>
 
             </div>
 
@@ -805,6 +833,16 @@ export default function MembershipPage() {
                   className="inline-flex w-fit shrink-0 items-center gap-3 rounded-full bg-white px-7 py-4 text-sm font-bold text-[#0B1F3A] transition hover:-translate-y-1 hover:bg-slate-100"
                 >
                   Join NIA
+                  <ArrowRight size={17} />
+                </a>
+
+                <a
+                  href={COMMUNITY_PORTAL_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit shrink-0 items-center gap-3 rounded-full border border-white/30 bg-white/10 px-7 py-4 text-sm font-bold text-white transition hover:bg-white/20"
+                >
+                  Member Portal
                   <ArrowRight size={17} />
                 </a>
 
