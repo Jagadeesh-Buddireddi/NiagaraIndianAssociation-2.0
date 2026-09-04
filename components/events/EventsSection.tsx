@@ -129,9 +129,9 @@ export default function EventsSection() {
                 POSTER
             ================================================= */}
 
-            <div className="w-full bg-[#fffdf8] p-3 sm:p-5 lg:p-6">
+            <div className="self-stretch w-full bg-gradient-to-b from-[#0B1F3A] via-[#0B1F3A] to-[#0d3140] p-3 sm:p-5 lg:p-6">
 
-              <div className="mx-auto w-full max-w-[600px] overflow-hidden rounded-2xl bg-white shadow-lg">
+              <div className="mx-auto w-full max-w-[600px] overflow-hidden rounded-2xl bg-white shadow-xl ring-1 ring-white/10">
 
                 <Image
                   src={

@@ -76,21 +76,29 @@ export default async function EventDetailsPage({
   const isPast = eventDate < today;
 
   return (
-    <main className="min-h-screen bg-[#fffdf8]">
+    <main className="min-h-screen overflow-x-clip bg-[#fffdf8] text-[#0B1F3A]">
 
       {/* =====================================================
           HERO
       ===================================================== */}
 
-      <section className="relative overflow-hidden bg-[#0B1F3A]">
+      <section className="relative isolate overflow-hidden bg-[#07182f]">
 
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute -left-20 -top-20 h-72 w-72 rounded-full border-[35px] border-orange-500" />
-
-          <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full border-[40px] border-green-600" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="absolute -left-24 -top-24 h-80 w-80 rounded-full bg-orange-500/15 blur-3xl" />
+          <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-green-500/15 blur-3xl" />
+          <div
+            className="absolute inset-0 opacity-[0.045]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+              backgroundSize: "44px 44px",
+            }}
+          />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-orange-500 via-white/40 to-green-500" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+        <div className="relative mx-auto max-w-7xl px-6 pb-16 pt-20 sm:px-10 lg:px-10 lg:pb-20 lg:pt-24">
 
           {/* Back */}
 
@@ -144,7 +152,7 @@ export default async function EventDetailsPage({
           EVENT DETAILS
       ===================================================== */}
 
-      <section className="mx-auto max-w-7xl px-6 py-12 lg:px-10 lg:py-16">
+      <section className="relative mx-auto max-w-7xl px-6 py-14 sm:py-16 lg:px-10 lg:py-20">
 
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
 
@@ -152,17 +160,36 @@ export default async function EventDetailsPage({
               POSTER
           ================================================= */}
 
-          <div className="relative min-h-[500px] overflow-hidden rounded-[28px] bg-white shadow-xl ring-1 ring-slate-200">
+          <div className="self-start overflow-hidden rounded-[28px] border border-slate-200 bg-white p-3 shadow-[0_20px_60px_rgba(11,31,58,0.12)] sm:p-4">
+            <div className="relative overflow-hidden rounded-[22px] bg-[#07182f]">
+              <Image
+                src={event.image}
+                alt={event.title}
+                width={1100}
+                height={1369}
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="block h-auto w-full object-contain"
+              />
+            </div>
 
-            <Image
-              src={event.image}
-              alt={event.title}
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-contain"
-            />
-
+            <div className="flex items-center justify-between gap-4 px-2 pb-1 pt-4">
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-orange-500">
+                  Niagara Indian Association
+                </p>
+                <p className="mt-1 text-sm font-bold text-[#0B1F3A]">
+                  Community Event
+                </p>
+              </div>
+              <span className={`rounded-full px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.16em] ${
+                isUpcoming
+                  ? "bg-orange-50 text-orange-600"
+                  : "bg-green-50 text-green-700"
+              }`}>
+                {isUpcoming ? "Upcoming" : "Completed"}
+              </span>
+            </div>
           </div>
 
           {/* =================================================
@@ -211,7 +238,7 @@ export default async function EventDetailsPage({
 
               {/* TIME */}
 
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_10px_30px_rgba(11,31,58,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-lg">
 
                 <Clock3
                   size={20}
@@ -230,7 +257,7 @@ export default async function EventDetailsPage({
 
               {/* LOCATION */}
 
-              <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_10px_30px_rgba(11,31,58,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-lg">
 
                 <MapPin
                   size={20}
@@ -321,7 +348,7 @@ export default async function EventDetailsPage({
                     {event.activities.map((activity) => (
                       <div
                         key={activity.number}
-                        className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                        className="group rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_8px_28px_rgba(11,31,58,0.05)] transition duration-300 hover:-translate-y-1 hover:border-orange-200 hover:shadow-lg"
                       >
 
                         <div className="flex gap-4">
@@ -386,6 +413,34 @@ export default async function EventDetailsPage({
 
         </div>
 
+      </section>
+
+      <section className="px-6 pb-16 sm:px-10 lg:pb-20">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[28px] bg-[#07182f] px-6 py-8 shadow-[0_20px_60px_rgba(11,31,58,0.16)] sm:px-8 lg:flex lg:items-center lg:justify-between lg:gap-8">
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="h-px w-7 bg-orange-400" />
+              <span className="text-[10px] font-black uppercase tracking-[0.26em] text-orange-300">
+                NIA Community
+              </span>
+              <span className="h-px w-7 bg-green-500" />
+            </div>
+            <h2 className="mt-3 text-2xl font-black text-white sm:text-3xl">
+              Discover more NIA events.
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+              Stay connected with cultural celebrations, community programs and upcoming activities across Niagara.
+            </p>
+          </div>
+
+          <Link
+            href="/events"
+            className="mt-6 inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-orange-400 lg:mt-0"
+          >
+            View All Events
+            <CalendarPlus size={17} />
+          </Link>
+        </div>
       </section>
 
     </main>
